@@ -48,11 +48,3 @@ Run [Directus](https://directus.io/) on [fly.io](https://fly.io/).
 ## How it works
 
 This app runs Directus backed by sqlite using [Litefs](https://github.com/superfly/litefs) for global replication. The app is deployed as a Docker container.
-
-## License
-
-[MIT](LICENSE)
-
-[/code]
-
-I also have a docker-compose.yml file which I use for local development. I’m not sure how to get that into fly.io, but I’m sure it’s possible.
