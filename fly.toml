@@ -1,4 +1,4 @@
-app = "directus-fly"
+app = "directus"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
@@ -7,23 +7,27 @@ processes = []
   dockerfile = "Dockerfile"
 
 [env]
-  KEY = "<KEY>"
+  KEY = "SET USING SECRETS"
   DB_CLIENT = "sqlite3"
   DB_FILENAME = "/litefs/directus.db"
   CACHE_ENABLED = false
   # CACHE_STORE = "redis"
-  # CACHE_REDIS = "<REDIS_URL>"
-  # ADMIN_EMAIL = 'SET USING SECRETS'
-  # ADMIN_PASSWORD = 'SET USING SECRETS'
-  STORAGE_LOCATIONS = "local"
+  # CACHE_REDIS = "<redis url>"
+  ADMIN_EMAIL = 'SET USING SECRETS'
+  ADMIN_PASSWORD = 'SET USING SECRETS'
+  # STORAGE_LOCATIONS = "s3"
   STORAGE_LOCAL_ROOT = "/data/directus/uploads"
+  # STORAGE_R2_DRIVER = "s3"
+  # STORAGE_R2_REGION = "auto"
+  # STORAGE_R2_BUCKET = "<bucket name>"
+  # STORAGE_R2_ENDPOINT = "<bucket endpoint>"
   # MESSENGER_STORE = "redis"
   # MESSENGER_NAMESPACE = "directus"
-  # MESSENGER_REDIS_URL = "<REDIS_URL>"
+  # MESSENGER_REDIS_URL = "<redis url>"
   TELEMETRY = false
   # Make sure to set this in production
   # (see https://docs.directus.io/self-hosted/config-options#general)
-  PUBLIC_URL = 'https://<FLY_APP_NAME>.fly.dev'
+  PUBLIC_URL = "https://<app name>.fly.dev"
 
 [mounts]
   source="directus"
@@ -36,7 +40,7 @@ processes = []
 
 [[services]]
   http_checks = []
-  internal_port = 8055
+  internal_port = 8056
   protocol = "tcp"
   script_checks = []
   [services.concurrency]

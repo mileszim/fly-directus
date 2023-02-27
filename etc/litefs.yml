@@ -57,6 +57,27 @@ http:
   # Specifies the bind address of the HTTP API server.
   addr: ":20202"
 
+# This section defines settings for the option HTTP proxy.
+# This proxy can handle primary forwarding & replica consistency
+# for applications that use a single SQLite database.
+proxy:
+  # Specifies the bind address of the proxy server.
+  addr: ":8056"
+
+  # The hostport of the target application.
+  target: "localhost:8055"
+
+  # The name of the database used for TXID tracking.
+  db: "/litefs/directus.db"
+
+  # If true, enables verbose logging of requests by the proxy.
+  debug: true
+
+  # List of paths that are ignored by the proxy. The asterisk is
+  # the only available wildcard. These requests are passed
+  # through to the target as-is.
+  passthrough: ["/admin/assets/*", "/extensions/*"]
+
 # The lease section defines how LiteFS creates a cluster and
 # implements leader election. For dynamic clusters, use the
 # "consul". This allows the primary to change automatically when
